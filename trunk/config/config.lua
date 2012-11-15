@@ -3,10 +3,10 @@
 function returnDLPath()
 
 --windows
-	--return ";C:\\LuaRocks\\kepler\\htdocs\\digitallibrary\\?.lua"
+	return ";C:\\LuaRocks\\kepler\\htdocs\\dl_lua\\?.lua"
 
 --linux	
-	return ";/home/b/cibse/public_html/eduardo/?.lua"
+	--return ";/home/b/cibse/public_html/eduardo/?.lua"
 end
 
 -- return the path to images in main page

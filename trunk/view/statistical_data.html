@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<!--
+@title: Displays statistical data page
+@goal: Displays a page with the option to view different statistics about the event.
+@context: 
+	- location: view layer
+	- precondition: -TO DO-
+@actors: user
+@resources: bootstrap.min.css, dl_style.css, ajax_scripts.js, jquery-1.8.2.min.js and statistics_logo.png
+-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta content="digital, library" name="keywords" />
+<meta content="Digital Library Statical Data" name="description" />
+
+<!-- @episode : adds javascript files used on page-->
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/ajax_scripts.js"></script>
+
+<!-- @episode : adds css stylesheets used on page-->
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/dl_style.css" />
+
+<script type="text/javascript">
+		
+// @episode : adds behaviour to the side menu itens. 		
+	$(document).ready(function(){
+
+		$("#home").click(function(){
+			$("#home_li").addClass("active");
+			$("#data1_li").removeClass("active");
+			$("#data2_li").removeClass("active");
+			$("#data3_li").removeClass("active");
+		});
+
+		$("#keywordsUsedByAuthor").click(function(){
+			$("#home_li").removeClass("active");
+			$("#data1_li").addClass("active");
+			$("#data2_li").removeClass("active");
+			$("#data3_li").removeClass("active");
+			$("#keywords_used").removeAttr("hidden");
+
+//@episode : REQUEST KEYWORDS USED BY THE AUTHORS.
+			statisticalModule.keywordsUsedByAuthor();
+		});
+		$("#data2").click(function(){
+			$("#home_li").removeClass("active");
+			$("#data1_li").removeClass("active");
+			$("#data2_li").addClass("active");
+			$("#data3_li").removeClass("active");
+		});
+		$("#data3").click(function(){
+			$("#home_li").removeClass("active");
+			$("#data1_li").removeClass("active");
+			$("#data2_li").removeClass("active");
+			$("#data3_li").addClass("active");
+		});
+		
+	});	
+	</script>
+<title>Estatística</title>
+</head>
+<body>
+
+<!-- @episode : shows page header.-->	
+	<div id="page_title"><img src="images/statistics_logo.png" class="img-rounded"></div>
+	<div class="container-fluid">
+  		<div class="row-fluid">
+		
+			<div class="span2">
+
+      
+<!-- @episode : shows the side menu with the available options.-->
+				<ul class="nav nav-list">
+					<li class="active" id="home_li"><a id="home" href="#"><i class="icon-home"></i>WER Papers</a></li>
+					<li id="data1_li"><a id="keywordsUsedByAuthor" href="#"><i class="icon-book"></i> Palavras chave utilizadas pelo autor</a></li>
+					<li id="data2_li"><a id="data2" href="#"><i class="icon-book"></i> Data2</a></li>
+					<li id="data3_li"><a id="data3" href="#"><i class="icon-book"></i> Data3</a></li>
+				</ul>
+
+
+			</div>
+			
+			<div class="span10">
+
+<!-- @episode : shows a table with the number of times each author used the keywords.-->
+				<div id="keywords_used" hidden>
+					<h3>Palavras-chave utilizadas por autores</h3>
+					<table id="keywords_used_table" class="table table-bordered">
+	              		<thead>
+	               		<tr>
+	                  		<th>Autor</th>
+	                  		<th>Palavra chave</th>
+	                  		<th>Número de ocorrências</th>
+	                	</tr>
+	              		</thead>
+		              	<tbody>
+	
+		              	</tbody>
+		            </table>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+</body>
+</html>
